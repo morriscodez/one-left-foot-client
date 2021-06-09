@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter as Router } from "react-router-dom"
+import { OneLeftFoot } from "./components/One-Left-Foot"
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      
+      <OneLeftFoot />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
