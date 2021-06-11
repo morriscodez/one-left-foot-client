@@ -1,6 +1,6 @@
 import { Route, Redirect } from "react-router-dom"
-// import { Login } from "./auth/Login"
-// import { Register } from "./auth/Register"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
 // import { userStorageKey } from "./auth/authSettings"
 import { NavBar } from "./nav/NavBar"
 // import { Home } from "./Home"
@@ -14,7 +14,7 @@ function OneLeftFoot() {
             if (sessionStorage.getItem(userStorageKey)) {
                 return (
                     <>
-                        <Navbar />
+                        <NavBar />
                         <ApplicationViews />
                         <Footer />
                     </>
