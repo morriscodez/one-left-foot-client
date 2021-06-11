@@ -9,6 +9,7 @@ export const ApplicationViews = () => {
                 <Home />
             </Route>
             
+            
         </>
     )
 }
