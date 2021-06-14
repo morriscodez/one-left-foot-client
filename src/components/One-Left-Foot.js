@@ -1,20 +1,20 @@
 import { Route, Redirect } from "react-router-dom"
-// import { Login } from "./auth/Login"
-// import { Register } from "./auth/Register"
+import { Login } from "./auth/login"
+import { Register } from "./auth/register"
 // import { userStorageKey } from "./auth/authSettings"
-// import { NavBar } from "./nav/NavBar"
+import { NavBar } from "./nav/NavBar"
 // import { Home } from "./Home"
 // import { ApplicationViews } from "./ApplicationViews"
-// import { Footer } from "./nav/Footer"
+import { Footer } from "./nav/Footer"
+import { ApplicationViews } from "./ApplicationViews"
 
-//TODO: Change sessionStorage on line 14 to getting the user token / authentication credentials
-function OneLeftFoot() {
+export function OneLeftFoot() {
     return <>
         <Route render={() => {
-            if (sessionStorage.getItem(userStorageKey)) {
+            if (localStorage.getItem('olf_token')) {
                 return (
                     <>
-                        <Navbar />
+                        <NavBar />
                         <ApplicationViews />
                         <Footer />
                     </>
@@ -22,14 +22,15 @@ function OneLeftFoot() {
             } else {
                 return <Redirect to="/login" />;
             }
-        }}>
+                            }} />
+            
             <Route path="/login">
                 <Login />
             </Route>
             <Route path="/register">
                 <Register />
             </Route>
-        </Route>
+            
         
     </>
 }
