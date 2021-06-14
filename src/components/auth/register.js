@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useHistory } from "react-router"
 // import "./Auth.css"
 
 export const Register = (props) => {
@@ -10,6 +11,7 @@ export const Register = (props) => {
     const password = React.createRef()
     const verifyPassword = React.createRef()
     const passwordDialog = React.createRef()
+    const history = useHistory()
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -36,7 +38,7 @@ export const Register = (props) => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("olf_token", res.token)
-                        props.history.push("/")
+                        history.push("/")
                     }
                 })
         } else {
@@ -75,7 +77,7 @@ export const Register = (props) => {
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
+                    <label htmlFor="bio"> Bio </label>
                     <textarea ref={bio} name="bio" className="form-control" placeholder="Let other gamers know a little bit about you..." />
                 </fieldset>
                 <fieldset style={{
