@@ -1,22 +1,22 @@
 import React, { useContext } from "react"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import { WorkoutContext } from "./WorkoutProvider"
 
 export const PracticePartnerCard = ({ profileObj }) => {
 
 
-
   return <>
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Img variant="top" src={profileObj.follower?.img} />
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
+              <Card.Title>
+                { profileObj.follower?.user && profileObj.follower?.user.first_name } 
+                { profileObj.follower?.user && profileObj.follower?.user.last_name }
+              </Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                Contact: {profileObj.follower?.user.email}
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              <Button variant="primary" href={`./profile/${profileObj.follower?.user.first_name}`}>View Profile</Button>
             </Card.Body>
           </Card>
         </>

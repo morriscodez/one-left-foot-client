@@ -47,23 +47,23 @@ export const ProfileRender = () => {
                         <h3>Followers</h3>
                     </header>
                     <div className="followers__list">
-                        {profile.leader.map(follower => {
+                        {profile?.leader?.map(follower => {
                             return <PracticePartnerCard key={follower.id} profileObj={follower} />
                         })}
                     
                     </div>
                 </section>
-                <section className="leaders__info">
+                {/* <section className="leaders__info">
                     <header className="leaders__header">
                         <h3>Leaders</h3>
                     </header>
                     <div className="leaders__list">
-                        {profile.leader.map(leader => {
+                        {profile?.follower?.map(leader => {
                             return <PracticePartnerCard key={leader.id} profileObj={leader} />
                         })}
                     
                     </div>
-                </section>
+                </section> */}
             </article>
         </>
     )
