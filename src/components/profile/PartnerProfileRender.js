@@ -35,9 +35,7 @@ export const PartnerProfileRender = () => {
                     <div className="profile__name">
                         Name: {profile.user && profile.user.first_name} {profile.user && profile.user.last_name}
                     </div>
-                    <div className="profile__username">Username: {profile.user && profile.user.username}</div>
                     <div className="profile__bio">About: {profile.user && profile.bio}</div>
-                    <div className="profile__email">Email: {profile.user && profile.user.email}</div>
                     <div className="profile__img"> 
                         <img src={profile.img}>
                         </img>
