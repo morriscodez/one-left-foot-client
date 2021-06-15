@@ -16,7 +16,7 @@ export const FollowerCard = ({ profileObj }) => {
               <Card.Text>
                 Schedule Practice: {profileObj.follower?.user.email}
               </Card.Text>
-              <Button variant="primary" href={`./profile/${profileObj.follower?.user.first_name}`}>View Profile</Button>
+              <Button variant="primary" href={`./profile/${profileObj.follower?.id}`}>View Profile</Button>
             </Card.Body>
           </Card>
         </>
