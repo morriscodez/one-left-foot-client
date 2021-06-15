@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
-import { FollowerCard } from "./FollowerCard"
-import { LeaderCard } from "./LeaderCard"
+import { Button } from "react-bootstrap"
 
 export const PartnerProfileRender = () => {
-
+//todo: build an object that sends the sender and receiver id to requests via context
     const { partnerId } = useParams()
     const history = useHistory()
     const { profile, getPartnerProfile } = useContext(ProfileContext)
@@ -15,10 +14,10 @@ export const PartnerProfileRender = () => {
         getPartnerProfile(partnerId)
     }, [])
     
-    //! DELETE LATER
-    useEffect(() => {
-        console.log("profile fetch result", profile)
-    }, [profile])
+
+    const handleRequest = e => {
+
+    }
 
     return (
         <>
@@ -39,6 +38,9 @@ export const PartnerProfileRender = () => {
                     <div className="profile__img"> 
                         <img src={profile.img}>
                         </img>
+                    </div>
+                    <div className="request__practice">
+                        <Button variant="primary" onClick={handleRequest}>Primary</Button>{' '}
                     </div>
                 </section>
             </article>

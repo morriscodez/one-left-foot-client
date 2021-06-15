@@ -6,6 +6,7 @@ export const ProfileProvider = (props) => {
 
     const [profile, setProfile] = useState([])
     const [friendProfiles, setFriendProfiles] = useState([])
+    const requests = []
 
     const getProfile = () => {
         return fetch("http://localhost:8000/profile", {
@@ -26,6 +27,7 @@ export const ProfileProvider = (props) => {
         .then(res => res.json())
         .then(setProfile)
     }
+
     
     return (
         <ProfileContext.Provider value={{

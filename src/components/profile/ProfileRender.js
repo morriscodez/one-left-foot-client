@@ -3,20 +3,21 @@ import { useHistory, useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 import { FollowerCard } from "./FollowerCard"
 import { LeaderCard } from "./LeaderCard"
+import { RequestCard } from "./RequestCard"
 
 export const ProfileRender = () => {
-
+    //TODO: add requests from context and set a conditional to grab all the requests where the receiver matches current user id
+    
     const history = useHistory()
     const { profile, getProfile } = useContext(ProfileContext)
+    
 
     useEffect(() => {
         getProfile()
     }, [])
+
+
     
-    //! DELETE LATER
-    useEffect(() => {
-        console.log("profile fetch result", profile)
-    }, [profile])
 
     return (
         <>
@@ -50,8 +51,7 @@ export const ProfileRender = () => {
                     <div className="followers__list">
                         {profile?.leader?.map(follower => {
                             return <FollowerCard key={follower.id} profileObj={follower} />
-                        })}
-                    
+                        })}                   
                     </div>
                 </section>
                 <section className="leaders__info">
@@ -61,9 +61,15 @@ export const ProfileRender = () => {
                     <div className="leaders__list">
                         {profile?.follower?.map(leader => {
                             return <LeaderCard key={leader.id} profileObj={leader} />
-                        })}
-                    
+                        })}                    
                     </div>
+                </section>
+            </article>
+            <article className="requests__info">
+                <section className="requests__list">
+                    {profile?.requests?.map(request => {
+                        return <RequestCard key={request.id} sender={request.sender} />
+                    })}
                 </section>
             </article>
         </>
