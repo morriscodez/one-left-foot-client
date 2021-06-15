@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
-import { PracticePartnerCard } from "./PracticePartnerCard"
+import { FollowerCard } from "./FollowerCard"
+import { LeaderCard } from "./LeaderCard"
 
 export const ProfileRender = () => {
 
@@ -48,22 +49,22 @@ export const ProfileRender = () => {
                     </header>
                     <div className="followers__list">
                         {profile?.leader?.map(follower => {
-                            return <PracticePartnerCard key={follower.id} profileObj={follower} />
+                            return <FollowerCard key={follower.id} profileObj={follower} />
                         })}
                     
                     </div>
                 </section>
-                {/* <section className="leaders__info">
+                <section className="leaders__info">
                     <header className="leaders__header">
                         <h3>Leaders</h3>
                     </header>
                     <div className="leaders__list">
                         {profile?.follower?.map(leader => {
-                            return <PracticePartnerCard key={leader.id} profileObj={leader} />
+                            return <LeaderCard key={leader.id} profileObj={leader} />
                         })}
                     
                     </div>
-                </section> */}
+                </section>
             </article>
         </>
     )

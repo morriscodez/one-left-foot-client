@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export const PracticePartnerCard = ({ profileObj }) => {
+export const FollowerCard = ({ profileObj }) => {
 
 
   return <>
