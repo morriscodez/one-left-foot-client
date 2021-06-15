@@ -14,7 +14,7 @@ export const LeaderCard = ({ profileObj }) => {
                     {profileObj.leader?.user && profileObj.leader?.user.last_name}
                 </Card.Title>
                 <Card.Text>
-                    Contact: {profileObj.leader?.user.email}
+                    Schedule Practice: {profileObj.leader?.user.email}
                 </Card.Text>
                 <Button variant="primary" href={`./profile/${profileObj.leader?.user.first_name}`}>View Profile</Button>
             </Card.Body>

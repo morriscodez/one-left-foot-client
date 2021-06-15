@@ -14,7 +14,7 @@ export const FollowerCard = ({ profileObj }) => {
                 { profileObj.follower?.user && profileObj.follower?.user.last_name }
               </Card.Title>
               <Card.Text>
-                Contact: {profileObj.follower?.user.email}
+                Schedule Practice: {profileObj.follower?.user.email}
               </Card.Text>
               <Button variant="primary" href={`./profile/${profileObj.follower?.user.first_name}`}>View Profile</Button>
             </Card.Body>
