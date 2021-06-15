@@ -4,13 +4,15 @@ import { ProfileContext } from "./ProfileProvider"
 import { FollowerCard } from "./FollowerCard"
 import { LeaderCard } from "./LeaderCard"
 
-export const ProfileRender = () => {
+export const PartnerProfileRender = () => {
 
+    const { partnerId } = useParams()
     const history = useHistory()
-    const { profile, getProfile } = useContext(ProfileContext)
+    const { profile, getPartnerProfile } = useContext(ProfileContext)
+
 
     useEffect(() => {
-        getProfile()
+        getPartnerProfile(partnerId)
     }, [])
     
     //! DELETE LATER
@@ -22,18 +24,21 @@ export const ProfileRender = () => {
         <>
             <article className="profile">
                 <header>
-                    <h1>Your Profile</h1>
+                    <h1>
+                        Profile
+                    </h1>
                 </header>
                 <section className="profile__info">
                     <header className="profile__header">
-                        <h3>Your Info</h3>
+                        <h3>Info</h3>
                     </header>
                     <div className="profile__name">
-                        Welcome: {profile.user && profile.user.first_name} {profile.user && profile.user.last_name}
+                        Name: {profile.user && profile.user.first_name} {profile.user && profile.user.last_name}
                     </div>
                     <div className="profile__username">Username: {profile.user && profile.user.username}</div>
-                    <div className="profile__bio">About you: {profile.user && profile.bio}</div>
-                    <div className="profile__img">you: 
+                    <div className="profile__bio">About: {profile.user && profile.bio}</div>
+                    <div className="profile__email">Email: {profile.user && profile.user.email}</div>
+                    <div className="profile__img"> 
                         <img src={profile.img}>
                         </img>
                     </div>
