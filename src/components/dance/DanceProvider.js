@@ -30,13 +30,25 @@ export const DanceProvider = (props) => {
     }
     
     const getFriendDances = (id) => {
-        return fetch(`http://localhost:8000/mydances${id}`, {
+        return fetch(`http://localhost:8000/mydances/${id}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
         })
         .then(res => res.json())
         .then(setFriendDances)
+    }
+
+
+    const addUserDance = (newDance) => {
+        return fetch(`http://localhost:8000/mydances`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newDance)
+        })
+        .then(getUserDances)
     }
     
 
@@ -45,7 +57,7 @@ export const DanceProvider = (props) => {
     
     return (
         <DanceContext.Provider value={{
-            danceTypes, setDanceTypes, getDanceTypes, userDances, setUserDances, getUserDances, friendDances, setFriendDances, getFriendDances
+            danceTypes, setDanceTypes, getDanceTypes, userDances, setUserDances, getUserDances, friendDances, setFriendDances, getFriendDances, addUserDance
 }}>
             {props.children}
         </DanceContext.Provider>
