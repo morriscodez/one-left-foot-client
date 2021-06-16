@@ -24,7 +24,7 @@ export const ProfileProvider = (props) => {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
-        })
+        }).then(getProfile)
     }
     
     const acceptRequest = (requestId, followerId, leaderId) => {
@@ -40,14 +40,14 @@ export const ProfileProvider = (props) => {
                     "followerId": followerId
                 }
             )
-        // }).then(() => {
-        //     return fetch(`http://localhost:8000/requests/${requestId}`, {
-        //     method: "DELETE",
-        //     headers: {
-        //         "Authorization": `Token ${localStorage.getItem("olf_token")}`
-        //     }
-        // })
-        })        
+        }).then(() => {
+            return fetch(`http://localhost:8000/requests/${requestId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("olf_token")}`
+            }
+        })
+        }).then(getProfile)        
     }
 
 
