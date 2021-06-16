@@ -18,20 +18,20 @@ export const ProfileProvider = (props) => {
         .then(setProfile)
     }
     
-    const getPartnerProfile = (partnerId) => {
-        return fetch(`http://localhost:8000/profile/${partnerId}`, {
+    const declineRequest = (requestId) => {
+        return fetch(`http://localhost:8000/requests/${requestId}`, {
+            method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
         })
-        .then(res => res.json())
-        .then(setProfile)
     }
+
 
     
     return (
         <ProfileContext.Provider value={{
-            profile, setProfile, getProfile, getPartnerProfile
+            profile, setProfile, getProfile, declineRequest
         }}>
             {props.children}
         </ProfileContext.Provider>

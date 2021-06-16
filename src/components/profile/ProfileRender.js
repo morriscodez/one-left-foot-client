@@ -6,7 +6,6 @@ import { LeaderCard } from "./LeaderCard"
 import { RequestCard } from "./RequestCard"
 
 export const ProfileRender = () => {
-    //TODO: add requests from context and set a conditional to grab all the requests where the receiver matches current user id
     
     const history = useHistory()
     const { profile, getProfile } = useContext(ProfileContext)
@@ -32,7 +31,6 @@ export const ProfileRender = () => {
                     <div className="profile__name">
                         Welcome: {profile.user && profile.user.first_name} {profile.user && profile.user.last_name}
                     </div>
-                    <div className="profile__username">Username: {profile.user && profile.user.username}</div>
                     <div className="profile__bio">About you: {profile.user && profile.bio}</div>
                     <div className="profile__img">you: 
                         <img src={profile.img}>
@@ -68,7 +66,7 @@ export const ProfileRender = () => {
             <article className="requests__info">
                 <section className="requests__list">
                     {profile?.requests?.map(request => {
-                        return <RequestCard key={request.id} sender={request.sender} />
+                        return <RequestCard key={request.id} request={request} />
                     })}
                 </section>
             </article>

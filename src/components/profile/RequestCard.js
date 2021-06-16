@@ -1,15 +1,18 @@
 import React, { useContext } from "react"
 import Button from 'react-bootstrap/Button'
 import Toast from 'react-bootstrap/Toast'
+import { ProfileContext } from "./ProfileProvider"
 
-export const RequestCard = ({ sender }) => {
+export const RequestCard = ({ request }) => {
+
+    const { declineRequest } = useContext(ProfileContext)
 
     const handleAccept = () => {
 
     }
 
-    const handleDecline = () => {
-
+    const handleDecline = (senderId) => {
+        declineRequest(senderId)
     }
 
     return <>
@@ -20,13 +23,16 @@ export const RequestCard = ({ sender }) => {
                 <small></small>
             </Toast.Header>
             <Toast.Body>
-                { sender?.user && sender.user?.first_name}
-                { sender?.user && sender.user?.last_name} would like to become practice partners
+                { request.sender?.user && request.sender?.user?.first_name}
+                { request.sender?.user && request.sender?.user?.last_name} would like to become practice partners
             </Toast.Body>
             <Button>
                 Accept
             </Button>
-            <Button>
+            <Button id={request.id} onClick={(e) => {
+                handleDecline(e.target.id)
+                console.log("e", e.target.id)  
+            }}>
                 Decline
             </Button>
         </Toast>
