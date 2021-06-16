@@ -7,7 +7,7 @@ export const PartnerProfileRender = () => {
 //todo: build an object that sends the sender and receiver id to requests via context
     const { partnerId } = useParams()
     const history = useHistory()
-    const { profile, getPartnerProfile } = useContext(ProfileContext)
+    const { partnerProfile, getPartnerProfile, requestPractice } = useContext(ProfileContext)
 
 
     useEffect(() => {
@@ -15,8 +15,9 @@ export const PartnerProfileRender = () => {
     }, [])
     
 
-    const handleRequest = e => {
-
+    const handleRequest = id => {
+        requestPractice(id)
+        console.log("request click", id)
     }
 
     return (
@@ -32,15 +33,17 @@ export const PartnerProfileRender = () => {
                         <h3>Info</h3>
                     </header>
                     <div className="profile__name">
-                        Name: {profile.user && profile.user.first_name} {profile.user && profile.user.last_name}
+                        Name: {partnerProfile.user && partnerProfile.user.first_name} {partnerProfile.user && partnerProfile.user.last_name}
                     </div>
-                    <div className="profile__bio">About: {profile.user && profile.bio}</div>
+                    <div className="profile__bio">About: {partnerProfile.user && partnerProfile.bio}</div>
                     <div className="profile__img"> 
-                        <img src={profile.img}>
+                        <img src={partnerProfile.img}>
                         </img>
                     </div>
                     <div className="request__practice">
-                        <Button variant="primary" onClick={handleRequest}>Primary</Button>{' '}
+                        <Button variant="primary" id={partnerId} onClick={e => {
+                            handleRequest(e.target.id)
+                        }}>Request Practice</Button>{' '}
                     </div>
                 </section>
             </article>
