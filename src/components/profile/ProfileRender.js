@@ -64,6 +64,9 @@ export const ProfileRender = () => {
                 </section>
             </article>
             <article className="requests__info">
+                <header className="requests__header">
+                    <h3>Pending Requests</h3>
+                </header>
                 <section className="requests__list">
                     {profile?.requests?.map(request => {
                         return <RequestCard key={request.id} request={request} />

@@ -26,12 +26,36 @@ export const ProfileProvider = (props) => {
             }
         })
     }
+    
+    const acceptRequest = (requestId, followerId, leaderId) => {
+        return fetch(`http://localhost:8000/partners`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(
+                {
+                    "leaderId": leaderId,
+                    "followerId": followerId
+                }
+            )
+        // }).then(() => {
+        //     return fetch(`http://localhost:8000/requests/${requestId}`, {
+        //     method: "DELETE",
+        //     headers: {
+        //         "Authorization": `Token ${localStorage.getItem("olf_token")}`
+        //     }
+        // })
+        })        
+    }
+
 
 
     
     return (
         <ProfileContext.Provider value={{
-            profile, setProfile, getProfile, declineRequest
+            profile, setProfile, getProfile, declineRequest, acceptRequest
         }}>
             {props.children}
         </ProfileContext.Provider>

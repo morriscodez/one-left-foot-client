@@ -5,10 +5,14 @@ import { ProfileContext } from "./ProfileProvider"
 
 export const RequestCard = ({ request }) => {
 
-    const { declineRequest } = useContext(ProfileContext)
+    const { declineRequest, acceptRequest, getProfile } = useContext(ProfileContext)
+    const senderId = parseInt(request.sender?.id)
+    const receiverId = parseInt(request?.receiver)
 
-    const handleAccept = () => {
-
+    const handleAccept = (requestId, followerId, leaderId) => {
+        
+        acceptRequest(requestId, followerId, leaderId)
+        console.log("requestId, followerId, leaderId", requestId, followerId, leaderId)
     }
 
     const handleDecline = (senderId) => {
@@ -26,12 +30,20 @@ export const RequestCard = ({ request }) => {
                 { request.sender?.user && request.sender?.user?.first_name}
                 { request.sender?.user && request.sender?.user?.last_name} would like to become practice partners
             </Toast.Body>
-            <Button>
-                Accept
+            <Button  id={request.id} onClick={(e) => {
+                handleAccept(e.target.id, senderId, receiverId)
+            }}>
+                Accept as Leader
+            </Button>
+            <Button  id={request.id} onClick={(e) => {
+                handleAccept(e.target.id, receiverId, senderId)
+            }}>
+                Accept as Follower
             </Button>
             <Button id={request.id} onClick={(e) => {
+                
                 handleDecline(e.target.id)
-                console.log("e", e.target.id)  
+            //!CLose the object
             }}>
                 Decline
             </Button>
