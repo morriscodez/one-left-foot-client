@@ -27,7 +27,7 @@ export const NavBar = (props) => {
                 <Nav className="ml-auto">
                         <Nav.Link className="nav-link" href="/profile">Profile</Nav.Link>
                         <Nav.Link className="nav-link" href="/login" onClick={() => {
-                            sessionStorage.clear()}}>
+                            localStorage.clear()}}>
                                 Logout
                         </Nav.Link>
                 </Nav>
