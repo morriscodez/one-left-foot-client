@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import Button from 'react-bootstrap/Button'
 import Toast from 'react-bootstrap/Toast'
 import { ProfileContext } from "./ProfileProvider"
@@ -8,6 +8,9 @@ export const RequestCard = ({ request }) => {
     const { declineRequest, acceptRequest, getProfile } = useContext(ProfileContext)
     const senderId = parseInt(request.sender?.id)
     const receiverId = parseInt(request?.receiver)
+
+    const [showToast, setShowToast] = useState(true)
+    const toggleShowToast = () => setShowToast(!showToast);
 
     const handleAccept = (requestId, followerId, leaderId) => {
         
@@ -20,7 +23,7 @@ export const RequestCard = ({ request }) => {
     }
 
     return <>
-        <Toast>
+        <Toast show={showToast} onClose={toggleShowToast}>
             <Toast.Header>
                 <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
                 <strong className="mr-auto">New Request!</strong>
@@ -43,7 +46,6 @@ export const RequestCard = ({ request }) => {
             <Button id={request.id} onClick={(e) => {
                 
                 handleDecline(e.target.id)
-            //!CLose the object
             }}>
                 Decline
             </Button>
