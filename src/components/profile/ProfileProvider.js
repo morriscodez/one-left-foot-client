@@ -6,7 +6,7 @@ export const ProfileProvider = (props) => {
 
     const [profile, setProfile] = useState([])
     const [partnerProfile, setPartnerProfile] = useState([])
-    const requests = []
+    
 
     const getProfile = () => {
         return fetch("http://localhost:8000/profile", {
