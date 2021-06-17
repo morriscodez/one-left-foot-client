@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { DanceContext } from './DanceProvider'
 import { useForm } from "react-hook-form";
-import "./dancestyles.css";
+// import "./dancestyles.css";
 
 
 

@@ -7,6 +7,7 @@ import { PartnerProfileRender } from "./profile/PartnerProfileRender"
 import { DanceProvider } from "./dance/DanceProvider"
 import { DanceForm } from "./dance/DanceForm"
 import { AvailabilityProvider } from "./availability/AvailabilityProvider"
+import { AvailabilityForm } from "./availability/AvailabilityForm"
 
 //TODO: Change Home() to the "find a practice partner!" as landing page
 export const ApplicationViews = () => {
@@ -27,6 +28,9 @@ export const ApplicationViews = () => {
                         </Route>
                         <Route exact path="/dances">
                             <DanceForm />
+                        </Route>
+                        <Route exact path="/myavailability">
+                            <AvailabilityForm />
                         </Route>
                     </ProfileProvider>
                 </DanceProvider>
