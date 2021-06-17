@@ -44,6 +44,7 @@ export const DanceProvider = (props) => {
 
     const addUserDance = (newDance) => {
         return fetch(`http://localhost:8000/mydances`, {
+            method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`,
                 "Content-Type": "application/json"

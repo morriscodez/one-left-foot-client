@@ -13,6 +13,7 @@ export const DanceForm = () => {
     
     const history = useHistory()
 
+
     useEffect(() => {
         getDanceTypes()
         getDanceRoles()
@@ -21,44 +22,46 @@ export const DanceForm = () => {
     }, [])
 
     const onSubmit = (data) => {
-        console.log(data)
+        console.log("data", data)
         
-        const newDance = {
-            "danceTypeId":data.danceTypeId,
-            "roleId": data.roleId,
-            "skillLevelId": data.skillLevelId
-        }
+        data.danceTypeId = parseInt(data.danceTypeId)
+        data.roleId = parseInt(data.roleId)
+        data.skillLevelId = parseInt(data.skillLevelId)
+        
+        console.log("data after parse", data)
 
-        addUserDance(newDance)
-        // history.push("/profile")
+        addUserDance(data)
+        history.push("/profile")
     };
+
+    console.log(watch("danceTypeId"))
 
     return <>
         <form onSubmit={handleSubmit(onSubmit)}>
             
             <fieldset>
                 <label for="danceTypeId">Dance: </label>
-                <select ref={register} name= "danceTypeId" id="danceTypeId">
+                <select {...register("danceTypeId", { required: true })} name= "danceTypeId" id="danceTypeId">
                     {danceTypes?.map(type => {
-                        return <option value={type.label}>{type.label}</option>
+                        return <option value={type.id}>{type.label}</option>
                     })}
                 </select>
             </fieldset>
             
             <fieldset>
                 <label for="role">Role: </label>
-                <select ref={register} name="roleId" id="roleId">
+                <select {...register("roleId", { required: true })} name="roleId" id="roleId">
                     {danceRoles?.map(role => {
-                        return <option value={role.label}>{role.label}</option>
+                        return <option value={role.id}>{role.label}</option>
                     })}
                 </select>
             </fieldset>
             
             <fieldset>
-                <label for="skill_level">Skill Level: </label>
-                <select ref={register} name="skillLevelId" id="skillLevelId">
+                <label for="skillLevelId">Skill Level: </label>
+                <select {...register("skillLevelId", { required: true })} name="skillLevelId" id="skillLevelId">
                     {skillLevels?.map(skill => {
-                        return <option value={skill.label}>{skill.label}</option>
+                        return <option value={skill.id}>{skill.label}</option>
                     })}
                 </select>
             </fieldset>
