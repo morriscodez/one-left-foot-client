@@ -7,6 +7,8 @@ export const DanceProvider = (props) => {
     const [danceTypes, setDanceTypes] = useState([])
     const [userDances, setUserDances] = useState([])
     const [friendDances, setFriendDances] = useState([])
+    const [skillLevels, setSkillLevels] = useState([])
+    const [danceRoles, setDanceRoles] = useState([])
     
 
     const getDanceTypes = () => {
@@ -53,11 +55,31 @@ export const DanceProvider = (props) => {
     
 
 
+    const getSkillLevels = () => {
+        return fetch("http://localhost:8000/skilllevels", {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("olf_token")}`
+            }
+        })
+        .then(res => res.json())
+        .then(setSkillLevels)
+    }
+    
+    const getDanceRoles = () => {
+        return fetch("http://localhost:8000/roles", {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("olf_token")}`
+            }
+        })
+        .then(res => res.json())
+        .then(setDanceRoles)
+    }
+
 
     
     return (
         <DanceContext.Provider value={{
-            danceTypes, setDanceTypes, getDanceTypes, userDances, setUserDances, getUserDances, friendDances, setFriendDances, getFriendDances, addUserDance
+            danceTypes, setDanceTypes, getDanceTypes, userDances, setUserDances, getUserDances, friendDances, setFriendDances, getFriendDances, addUserDance, skillLevels, setSkillLevels, getSkillLevels, getDanceRoles, setDanceRoles, danceRoles
 }}>
             {props.children}
         </DanceContext.Provider>
