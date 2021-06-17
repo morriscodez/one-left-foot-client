@@ -4,8 +4,7 @@ import { ProfileContext } from "./ProfileProvider"
 import { Button } from "react-bootstrap"
 import { DanceContext } from "../dance/DanceProvider"
 import { DanceCard } from "../dance/DanceCard"
-import { AvailabilityContext } from "../availability/AvailabilityProvider"
-import { AvailabilityCard } from "../availability/AvailabilityCard"
+import { MyAvailabilityCard } from "../availability/MyAvailabilityCard"
 
 export const PartnerProfileRender = () => {
     //todo: build an object that sends the sender and receiver id to requests via context
@@ -15,7 +14,6 @@ export const PartnerProfileRender = () => {
 
     const { friendDances, getFriendDances } = useContext(DanceContext)
 
-    const { myAvailability, getMyAvailability} = useContext(AvailabilityContext)
 
 
     useEffect(() => {
@@ -69,8 +67,8 @@ export const PartnerProfileRender = () => {
                             <h3>Availability</h3>
                         </header>
                         <section className="availability__list">
-                            {myAvailability?.map(window => {
-                                return <AvailabilityCard key={window.id} window={window} />
+                            {partnerProfile.availability_set?.map(window => {
+                                return <MyAvailabilityCard key={window.id} window={window} />
                             })}
                         </section>
                     </article>
