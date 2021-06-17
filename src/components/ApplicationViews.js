@@ -5,6 +5,7 @@ import { ProfileProvider } from "./profile/ProfileProvider"
 import { ProfileRender } from "./profile/ProfileRender"
 import { PartnerProfileRender } from "./profile/PartnerProfileRender"
 import { DanceProvider } from "./dance/DanceProvider"
+import { DanceForm } from "./dance/DanceForm"
 
 //TODO: Change Home() to the "find a practice partner!" as landing page
 export const ApplicationViews = () => {
@@ -21,6 +22,9 @@ export const ApplicationViews = () => {
                     </Route>
                     <Route exact path="/profile/:partnerId(\d+)">
                         <PartnerProfileRender />
+                    </Route>
+                    <Route exact path="/dances">
+                        <DanceForm />
                     </Route>
                 </ProfileProvider>
             </DanceProvider>
