@@ -20,7 +20,6 @@ export const NavBar = (props) => {
                 </Navbar.Brand> */}
                 <Nav className="mr-auto">
                     <Nav.Link className="nav-link" href="/findapartner">Find A Partner</Nav.Link>
-                    <Nav.Link className="nav-link" href="/myschedule">My Schedule</Nav.Link>
                     <Nav.Link className="nav-link" href="/myavailability">My Availability</Nav.Link>    
                     <Nav.Link className="nav-link" href="/dances">Dances</Nav.Link>    
                 </Nav>

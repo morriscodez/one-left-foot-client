@@ -4,10 +4,10 @@ import { DanceContext } from './DanceProvider'
 import { useForm } from "react-hook-form";
 import "./dancestyles.css";
 
+//! THIS WAS COPIED FROM ./DANCEFORM    REPURPOSE FOR SEARCH
 
 
-
-export const DanceForm = () => {
+export const FindAPartner = () => {
     const { danceTypes, getDanceTypes, skillLevels, getSkillLevels, danceRoles, getDanceRoles, addUserDance } = useContext(DanceContext)
     const { register, watch, handleSubmit } = useForm()
     
