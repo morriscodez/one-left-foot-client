@@ -6,6 +6,8 @@ import { LeaderCard } from "./LeaderCard"
 import { RequestCard } from "./RequestCard"
 import { DanceContext } from "../dance/DanceProvider"
 import { DanceCard } from "../dance/DanceCard"
+import { AvailabilityContext } from "../availability/AvailabilityProvider"
+import { MyAvailabilityCard} from "../availability/MyAvailabilityCard"
 
 export const ProfileRender = () => {
     
@@ -14,9 +16,12 @@ export const ProfileRender = () => {
     
     const { userDances, getUserDances } = useContext(DanceContext)
 
+    const { myAvailability, getMyAvailability} = useContext(AvailabilityContext)
+
     useEffect(() => {
         getProfile()
         getUserDances()
+        getMyAvailability()
     }, [])
 
 
@@ -49,6 +54,16 @@ export const ProfileRender = () => {
                 <section className="requests__list">
                     {userDances?.map(dance => {
                         return <DanceCard key={dance.dance_type.id} dance={dance} />
+                    })}
+                </section>
+            </article>
+            <article className="availability__info">
+                <header className="availability__header">
+                    <h3>Your Availability</h3>
+                </header>
+                <section className="availability__list">
+                    {myAvailability?.map(window => {
+                        return <MyAvailabilityCard key={window.id} window={window} />
                     })}
                 </section>
             </article>

@@ -1,6 +1,6 @@
-import React, { useState, createContext, useContext } from "react"
+import React, { useState, createContext} from "react"
 
-const AvailabilityContext = useContext()
+export const AvailabilityContext = createContext()
 
 export const AvailabilityProvider = (props) => {
     const [availabilities, setAvailabilities] = useState([])

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export const AvailabilityCard = ({ window }) => {
+export const MyAvailabilityCard = ({ window }) => {
 
     return <>
         <Card style={{ width: '18rem' }}>
@@ -14,7 +14,6 @@ export const AvailabilityCard = ({ window }) => {
                 <Card.Text>
                     {`From ${window?.start} to ${window?.end}`}
                 </Card.Text>
-                <Button variant="primary" href={`./profile/${window.dance_user?.id}`}>View Profile</Button>
             </Card.Body>
         </Card>
     </>
