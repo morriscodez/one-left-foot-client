@@ -2,18 +2,22 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 import { Button } from "react-bootstrap"
+import { DanceContext } from "../dance/DanceProvider"
+import { DanceCard } from "../dance/DanceCard"
 
 export const PartnerProfileRender = () => {
-//todo: build an object that sends the sender and receiver id to requests via context
+    //todo: build an object that sends the sender and receiver id to requests via context
     const { partnerId } = useParams()
     const history = useHistory()
     const { partnerProfile, getPartnerProfile, requestPractice } = useContext(ProfileContext)
 
+    const { friendDances, getFriendDances} = useContext(DanceContext)
 
     useEffect(() => {
         getPartnerProfile(partnerId)
+        getFriendDances(partnerId)
     }, [])
-    
+
 
     const handleRequest = id => {
         requestPractice(id)
@@ -36,7 +40,7 @@ export const PartnerProfileRender = () => {
                         Name: {partnerProfile.user && partnerProfile.user.first_name} {partnerProfile.user && partnerProfile.user.last_name}
                     </div>
                     <div className="profile__bio">About: {partnerProfile.user && partnerProfile.bio}</div>
-                    <div className="profile__img"> 
+                    <div className="profile__img">
                         <img src={partnerProfile.img}>
                         </img>
                     </div>
@@ -45,6 +49,16 @@ export const PartnerProfileRender = () => {
                             handleRequest(e.target.id)
                         }}>Request Practice</Button>{' '}
                     </div>
+                    <article className="dances__info">
+                        <header className="dances__header">
+                            <h3>Dances</h3>
+                        </header>
+                        <section className="requests__list">
+                            {friendDances?.map(dance => {
+                                return <DanceCard key={dance.dance_type.id} dance={dance} />
+                            })}
+                        </section>
+                    </article>
                 </section>
             </article>
         </>

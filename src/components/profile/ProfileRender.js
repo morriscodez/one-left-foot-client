@@ -4,15 +4,19 @@ import { ProfileContext } from "./ProfileProvider"
 import { FollowerCard } from "./FollowerCard"
 import { LeaderCard } from "./LeaderCard"
 import { RequestCard } from "./RequestCard"
+import { DanceContext } from "../dance/DanceProvider"
+import { DanceCard } from "../dance/DanceCard"
 
 export const ProfileRender = () => {
     
     const history = useHistory()
     const { profile, getProfile } = useContext(ProfileContext)
     
+    const { userDances, getUserDances } = useContext(DanceContext)
 
     useEffect(() => {
         getProfile()
+        getUserDances()
     }, [])
 
 
@@ -36,6 +40,16 @@ export const ProfileRender = () => {
                         <img src={profile.img}>
                         </img>
                     </div>
+                </section>
+            </article>
+            <article className="dances__info">
+                <header className="dances__header">
+                    <h3>Your Dances</h3>
+                </header>
+                <section className="requests__list">
+                    {userDances?.map(dance => {
+                        return <DanceCard key={dance.dance_type.id} dance={dance} />
+                    })}
                 </section>
             </article>
             <article className="partners">
