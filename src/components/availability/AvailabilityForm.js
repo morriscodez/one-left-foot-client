@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 
 
 export const AvailabilityForm = () => {
-    const { days, getDays } = useContext(AvailabilityContext)
+    const { days, getDays, addAvailability } = useContext(AvailabilityContext)
     const { register, watch, handleSubmit } = useForm()
     
     const history = useHistory()
@@ -27,8 +27,8 @@ export const AvailabilityForm = () => {
         
         console.log("data after parse", data)
 
-        // addUserDance("data after parse", data)
-        // history.push("/profile")
+        addAvailability(data)
+        history.push("/profile")
     };
 
     console.log(watch("dayId"))

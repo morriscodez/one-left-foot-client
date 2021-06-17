@@ -51,7 +51,7 @@ export const AvailabilityProvider = (props) => {
 
     return (
         <AvailabilityContext.Provider value={{
-            availabilities, setAvailabilities, getAvailabilities, myAvailability, setMyAvailability, getMyAvailability, getDays, days
+            availabilities, setAvailabilities, getAvailabilities, myAvailability, setMyAvailability, getMyAvailability, getDays, days, addAvailability
         }}>
             {props.children}
         </AvailabilityContext.Provider>
