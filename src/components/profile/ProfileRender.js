@@ -7,25 +7,55 @@ import { RequestCard } from "./RequestCard"
 import { DanceContext } from "../dance/DanceProvider"
 import { DanceCard } from "../dance/DanceCard"
 import { AvailabilityContext } from "../availability/AvailabilityProvider"
-import { MyAvailabilityCard} from "../availability/MyAvailabilityCard"
+import { MyAvailabilityCard } from "../availability/MyAvailabilityCard"
 
 export const ProfileRender = () => {
-    
+
     const history = useHistory()
-    const { profile, getProfile } = useContext(ProfileContext)
-    
+    const { profile, getProfile, updateProfile } = useContext(ProfileContext)
+
     const { userDances, getUserDances } = useContext(DanceContext)
 
-    const { myAvailability, getMyAvailability} = useContext(AvailabilityContext)
+    const { myAvailability, getMyAvailability } = useContext(AvailabilityContext)
 
+    const [image, setImage] = useState([])
+    
     useEffect(() => {
         getProfile()
         getUserDances()
         getMyAvailability()
     }, [])
 
-
     
+    
+    const getBase64 = (file, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(file);
+    } 
+    
+    //handle controlled input change and convert the image to a format that can be sent to server
+    const createProfileImageString = (event) => {
+        getBase64(event.target.files[0], (base64ImageString) => {
+            console.log("Base64 of file is", base64ImageString);
+    
+            // Update a component state variable to the value of base64ImageString
+            setImage(base64ImageString)
+        });
+    }
+
+
+    const handleSubmit = (event) => {
+        
+        const userId = parseInt(profile?.user.id)
+
+        const data = {
+            "bio": profile?.bio,
+            "img": image
+        }
+        
+        updateProfile(userId, data)
+    }
 
     return (
         <>
@@ -41,9 +71,16 @@ export const ProfileRender = () => {
                         Welcome: {profile.user && profile.user.first_name} {profile.user && profile.user.last_name}
                     </div>
                     <div className="profile__bio">About you: {profile.user && profile.bio}</div>
-                    <div className="profile__img">you: 
+                    <div className="profile__img">you:
                         <img src={profile.img}>
                         </img>
+                        <input type="file" id="img" onChange={createProfileImageString} />
+                        <input type="hidden" name="img" value={image} />
+                        <button onClick={() => {
+                            // Upload the stringified image that is stored in state
+                            handleSubmit()
+                        }}>Upload</button>
+
                     </div>
                 </section>
             </article>
@@ -78,7 +115,7 @@ export const ProfileRender = () => {
                     <div className="followers__list">
                         {profile?.leader?.map(follower => {
                             return <FollowerCard key={follower.id} profileObj={follower} />
-                        })}                   
+                        })}
                     </div>
                 </section>
                 <section className="leaders__info">
@@ -88,7 +125,7 @@ export const ProfileRender = () => {
                     <div className="leaders__list">
                         {profile?.follower?.map(leader => {
                             return <LeaderCard key={leader.id} profileObj={leader} />
-                        })}                    
+                        })}
                     </div>
                 </section>
             </article>

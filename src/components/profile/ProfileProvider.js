@@ -77,12 +77,21 @@ export const ProfileProvider = (props) => {
         }).then(getProfile)        
     }
 
-
+    const updateProfile = (userId, data) => {
+        return fetch(`http://localhost:8000/danceusers/${userId}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(getProfile)
+    }
 
     
     return (
         <ProfileContext.Provider value={{
-            profile, setProfile, getProfile, declineRequest, acceptRequest, partnerProfile, setPartnerProfile, getPartnerProfile, requestPractice
+            profile, setProfile, getProfile, declineRequest, acceptRequest, partnerProfile, setPartnerProfile, getPartnerProfile, requestPractice, updateProfile
         }}>
             {props.children}
         </ProfileContext.Provider>
