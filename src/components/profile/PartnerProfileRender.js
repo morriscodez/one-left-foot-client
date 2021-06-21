@@ -24,7 +24,6 @@ export const PartnerProfileRender = () => {
 
     const handleRequest = id => {
         requestPractice(id)
-        console.log("request click", id)
     }
 
     return (

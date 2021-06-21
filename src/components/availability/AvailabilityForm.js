@@ -19,21 +19,17 @@ export const AvailabilityForm = () => {
     }, [])
 
     const onSubmit = (data) => {
-        console.log("data", data)
         
         data.dayId = parseInt(data.dayId)
         data.start = data.start
         data.end = data.end
         
-        console.log("data after parse", data)
 
         addAvailability(data)
         history.push("/profile")
     };
 
-    console.log(watch("dayId"))
-    console.log(watch("start"))
-    console.log(watch("end"))
+
 
     return <>
         <form onSubmit={handleSubmit(onSubmit)}>

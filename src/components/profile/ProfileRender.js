@@ -37,7 +37,6 @@ export const ProfileRender = () => {
     //handle controlled input change and convert the image to a format that can be sent to server
     const createProfileImageString = (event) => {
         getBase64(event.target.files[0], (base64ImageString) => {
-            console.log("Base64 of file is", base64ImageString);
     
             // Update a component state variable to the value of base64ImageString
             setImage(base64ImageString)

@@ -22,19 +22,14 @@ export const DanceForm = () => {
     }, [])
 
     const onSubmit = (data) => {
-        // console.log("data", data)
         
         data.danceTypeId = parseInt(data.danceTypeId)
         data.roleId = parseInt(data.roleId)
         data.skillLevelId = parseInt(data.skillLevelId)
         
-        // console.log("data after parse", data)
-
         addUserDance(data)
         history.push("/profile")
     };
-
-    console.log(watch("danceTypeId"))
 
     return <>
         <form onSubmit={handleSubmit(onSubmit)}>

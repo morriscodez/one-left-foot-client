@@ -15,7 +15,6 @@ export const RequestCard = ({ request }) => {
     const handleAccept = (requestId, followerId, leaderId) => {
         
         acceptRequest(requestId, followerId, leaderId)
-        console.log("requestId, followerId, leaderId", requestId, followerId, leaderId)
     }
 
     const handleDecline = (senderId) => {

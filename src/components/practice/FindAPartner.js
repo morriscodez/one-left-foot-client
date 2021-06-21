@@ -21,7 +21,6 @@ export const FindAPartner = () => {
     }, [])
     
     useEffect(() => {
-        console.log("new dancers array", dancers)
 
     }, [dancers])
     
@@ -29,14 +28,10 @@ export const FindAPartner = () => {
 
     // Capture dance type id value, send to server to find dancers who do that dance
     const onSubmit = (data) => {
-        console.log("data", data)
         
         data = parseInt(data.danceTypeId)
-        console.log("data after parse", data)
         data != 0 ? getDancers(data) : alert("Select A Dance Before Submitting ")
     };
-
-    console.log(watch("danceTypeId"))
 
     return <>
         <form onSubmit={handleSubmit(onSubmit)}>
