@@ -1,4 +1,5 @@
 import React, { useState, createContext} from "react"
+import { authApi } from "../auth/AuthSettings"
 
 export const AvailabilityContext = createContext()
 
@@ -8,7 +9,7 @@ export const AvailabilityProvider = (props) => {
     const [days, setDays] = useState([])
 
     const getAvailabilities = () => {
-        return fetch("http://localhost:8000/availability", {
+        return fetch(`${authApi.localApiBaseUrl}/availability`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -18,7 +19,7 @@ export const AvailabilityProvider = (props) => {
     }
 
     const getMyAvailability = () => {
-        return fetch("http://localhost:8000/availability/myavailability", {
+        return fetch(`${authApi.localApiBaseUrl}/availability/myavailability`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -28,7 +29,7 @@ export const AvailabilityProvider = (props) => {
     }
 
     const addAvailability = (newWindow) => {
-        return fetch(`http://localhost:8000/availability`, {
+        return fetch(`${authApi.localApiBaseUrl}/availability`, {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`,
@@ -40,7 +41,7 @@ export const AvailabilityProvider = (props) => {
     }
 
     const getDays = () => {
-        return fetch("http://localhost:8000/days", {
+        return fetch(`${authApi.localApiBaseUrl}/days`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }

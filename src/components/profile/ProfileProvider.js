@@ -1,4 +1,6 @@
 import React, { useState, createContext } from "react"
+import { authApi } from "../auth/AuthSettings"
+
 
 export const ProfileContext = createContext()
 
@@ -9,7 +11,7 @@ export const ProfileProvider = (props) => {
     
 
     const getProfile = () => {
-        return fetch("http://localhost:8000/profile", {
+        return fetch(`${authApi.localApiBaseUrl}/profile`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -19,7 +21,7 @@ export const ProfileProvider = (props) => {
     }
     
     const getPartnerProfile = (partnerId) => {
-        return fetch(`http://localhost:8000/profile/${partnerId}`, {
+        return fetch(`${authApi.localApiBaseUrl}/profile/${partnerId}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -32,7 +34,7 @@ export const ProfileProvider = (props) => {
     
     
     const requestPractice = (receiverId) => {
-        return fetch(`http://localhost:8000/requests`, {
+        return fetch(`${authApi.localApiBaseUrl}/requests`, {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`,
@@ -46,7 +48,7 @@ export const ProfileProvider = (props) => {
     }
     
     const declineRequest = (requestId) => {
-        return fetch(`http://localhost:8000/requests/${requestId}`, {
+        return fetch(`${authApi.localApiBaseUrl}/requests/${requestId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
@@ -55,7 +57,7 @@ export const ProfileProvider = (props) => {
     }
     
     const acceptRequest = (requestId, followerId, leaderId) => {
-        return fetch(`http://localhost:8000/partners`, {
+        return fetch(`${authApi.localApiBaseUrl}/partners`, {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`,
@@ -68,7 +70,7 @@ export const ProfileProvider = (props) => {
                 }
             )
         }).then(() => {
-            return fetch(`http://localhost:8000/requests/${requestId}`, {
+            return fetch(`${authApi.localApiBaseUrl}/requests/${requestId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
@@ -78,7 +80,7 @@ export const ProfileProvider = (props) => {
     }
 
     const updateProfile = (userId, data) => {
-        return fetch(`http://localhost:8000/danceusers/${userId}`, {
+        return fetch(`${authApi.localApiBaseUrl}/danceusers/${userId}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`,

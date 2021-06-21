@@ -1,4 +1,6 @@
 import React, { useState, createContext } from "react"
+import { authApi } from "../auth/AuthSettings"
+
 
 export const DanceContext = createContext()
 
@@ -13,7 +15,7 @@ export const DanceProvider = (props) => {
     
 
     const getDanceTypes = () => {
-        return fetch("http://localhost:8000/dancetypes", {
+        return fetch(`${authApi.localApiBaseUrl}/dancetypes`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -23,7 +25,7 @@ export const DanceProvider = (props) => {
     }
     
     const getUserDances = () => {
-        return fetch(`http://localhost:8000/mydances`, {
+        return fetch(`${authApi.localApiBaseUrl}/mydances`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -33,7 +35,7 @@ export const DanceProvider = (props) => {
     }
     
     const getFriendDances = (id) => {
-        return fetch(`http://localhost:8000/mydances/${id}`, {
+        return fetch(`${authApi.localApiBaseUrl}/mydances/${id}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -44,7 +46,7 @@ export const DanceProvider = (props) => {
 
 
     const addUserDance = (newDance) => {
-        return fetch(`http://localhost:8000/mydances`, {
+        return fetch(`${authApi.localApiBaseUrl}/mydances`, {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`,
@@ -58,7 +60,7 @@ export const DanceProvider = (props) => {
 
 
     const getSkillLevels = () => {
-        return fetch("http://localhost:8000/skilllevels", {
+        return fetch(`${authApi.localApiBaseUrl}/skilllevels`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -68,7 +70,7 @@ export const DanceProvider = (props) => {
     }
     
     const getDanceRoles = () => {
-        return fetch("http://localhost:8000/roles", {
+        return fetch(`${authApi.localApiBaseUrl}/roles`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
@@ -78,7 +80,7 @@ export const DanceProvider = (props) => {
     }
 
     const getDancers = (danceTypeId) => {
-        return fetch(`http://localhost:8000/mydances?dance=${danceTypeId}`, {
+        return fetch(`${authApi.localApiBaseUrl}/mydances?dance=${danceTypeId}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("olf_token")}`
             }
