@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useContext, useEffect} from "react"
+import { useHistory} from 'react-router-dom';
 import { DanceContext } from './DanceProvider'
 import { useForm } from "react-hook-form";
-// import "./dancestyles.css";
 
 
 
 
 export const DanceForm = () => {
     const { danceTypes, getDanceTypes, skillLevels, getSkillLevels, danceRoles, getDanceRoles, addUserDance } = useContext(DanceContext)
-    const { register, watch, handleSubmit } = useForm()
+    const { register,handleSubmit } = useForm()
     
     const history = useHistory()
 

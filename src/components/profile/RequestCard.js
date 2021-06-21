@@ -5,7 +5,7 @@ import { ProfileContext } from "./ProfileProvider"
 
 export const RequestCard = ({ request }) => {
 
-    const { declineRequest, acceptRequest, getProfile } = useContext(ProfileContext)
+    const { declineRequest, acceptRequest } = useContext(ProfileContext)
     const senderId = parseInt(request.sender?.id)
     const receiverId = parseInt(request?.receiver)
 

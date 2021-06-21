@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useContext, useEffect } from "react"
+import { useHistory } from 'react-router-dom';
 import { AvailabilityContext } from './AvailabilityProvider'
 import { useForm } from "react-hook-form";
 
@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 export const AvailabilityForm = () => {
     const { days, getDays, addAvailability } = useContext(AvailabilityContext)
-    const { register, watch, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm()
     
     const history = useHistory()
 
@@ -20,10 +20,7 @@ export const AvailabilityForm = () => {
 
     const onSubmit = (data) => {
         
-        data.dayId = parseInt(data.dayId)
-        data.start = data.start
-        data.end = data.end
-        
+        data.dayId = parseInt(data.dayId)   
 
         addAvailability(data)
         history.push("/profile")

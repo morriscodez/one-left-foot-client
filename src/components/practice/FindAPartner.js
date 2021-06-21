@@ -1,18 +1,13 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useContext, useEffect } from "react"
 import { DanceContext } from '../dance/DanceProvider'
 import { useForm } from "react-hook-form";
 import { DancerCard } from "./DancerCard"
-// import "./dancestyles.css";
-
-//! THIS WAS COPIED FROM ./DANCEFORM    REPURPOSE FOR SEARCH
 
 
 export const FindAPartner = () => {
     const { dancers, getDancers, danceTypes, getDanceTypes } = useContext(DanceContext)
-    const { register, watch, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm()
     
-    const history = useHistory()
 
 
     useEffect(() => {

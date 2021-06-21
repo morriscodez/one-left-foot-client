@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 import { FollowerCard } from "./FollowerCard"
 import { LeaderCard } from "./LeaderCard"
@@ -11,7 +10,6 @@ import { MyAvailabilityCard } from "../availability/MyAvailabilityCard"
 
 export const ProfileRender = () => {
 
-    const history = useHistory()
     const { profile, getProfile, updateProfile } = useContext(ProfileContext)
 
     const { userDances, getUserDances } = useContext(DanceContext)
@@ -71,7 +69,7 @@ export const ProfileRender = () => {
                     </div>
                     <div className="profile__bio">About you: {profile.user && profile.bio}</div>
                     <div className="profile__img">you:
-                        <img src={profile.img}>
+                        <img src={profile.img} alt="profile">
                         </img>
                         <input type="file" id="img" onChange={createProfileImageString} />
                         <input type="hidden" name="img" value={image} />
