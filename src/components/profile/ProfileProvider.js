@@ -32,10 +32,7 @@ export const ProfileProvider = (props) => {
     const requestPractice = (receiverId) => {
         return fetch(`${apiSettings.baseUrl}/requests`, {
             method: "POST",
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
-                "Content-Type": "application/json"
-            },
+            headers: apiHeaders(),
             body: JSON.stringify(
                 {
                     "receiverId": receiverId
