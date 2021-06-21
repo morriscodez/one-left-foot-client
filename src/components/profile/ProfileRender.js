@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 import { FollowerCard } from "./FollowerCard"
 import { LeaderCard } from "./LeaderCard"
@@ -11,7 +10,6 @@ import { MyAvailabilityCard } from "../availability/MyAvailabilityCard"
 
 export const ProfileRender = () => {
 
-    const history = useHistory()
     const { profile, getProfile, updateProfile } = useContext(ProfileContext)
 
     const { userDances, getUserDances } = useContext(DanceContext)
@@ -37,7 +35,6 @@ export const ProfileRender = () => {
     //handle controlled input change and convert the image to a format that can be sent to server
     const createProfileImageString = (event) => {
         getBase64(event.target.files[0], (base64ImageString) => {
-            console.log("Base64 of file is", base64ImageString);
     
             // Update a component state variable to the value of base64ImageString
             setImage(base64ImageString)
@@ -72,7 +69,7 @@ export const ProfileRender = () => {
                     </div>
                     <div className="profile__bio">About you: {profile.user && profile.bio}</div>
                     <div className="profile__img">you:
-                        <img src={profile.img}>
+                        <img src={profile.img} alt="profile">
                         </img>
                         <input type="file" id="img" onChange={createProfileImageString} />
                         <input type="hidden" name="img" value={image} />

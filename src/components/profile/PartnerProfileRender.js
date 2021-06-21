@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
+import React, { useContext, useEffect} from "react"
+import { useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 import { Button } from "react-bootstrap"
 import { DanceContext } from "../dance/DanceProvider"
@@ -7,9 +7,7 @@ import { DanceCard } from "../dance/DanceCard"
 import { MyAvailabilityCard } from "../availability/MyAvailabilityCard"
 
 export const PartnerProfileRender = () => {
-    //todo: build an object that sends the sender and receiver id to requests via context
     const { partnerId } = useParams()
-    const history = useHistory()
     const { partnerProfile, getPartnerProfile, requestPractice } = useContext(ProfileContext)
 
     const { friendDances, getFriendDances } = useContext(DanceContext)
@@ -24,7 +22,6 @@ export const PartnerProfileRender = () => {
 
     const handleRequest = id => {
         requestPractice(id)
-        console.log("request click", id)
     }
 
     return (
@@ -44,7 +41,7 @@ export const PartnerProfileRender = () => {
                     </div>
                     <div className="profile__bio">About: {partnerProfile.user && partnerProfile.bio}</div>
                     <div className="profile__img">
-                        <img src={partnerProfile.img}>
+                        <img src={partnerProfile.img} alt="profile">
                         </img>
                     </div>
                     <div className="request__practice">

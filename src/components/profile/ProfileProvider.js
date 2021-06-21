@@ -1,4 +1,6 @@
 import React, { useState, createContext } from "react"
+import { apiSettings, apiHeaders } from '../Settings'
+
 
 export const ProfileContext = createContext()
 
@@ -9,20 +11,16 @@ export const ProfileProvider = (props) => {
     
 
     const getProfile = () => {
-        return fetch("http://localhost:8000/profile", {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/profile`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setProfile)
     }
     
     const getPartnerProfile = (partnerId) => {
-        return fetch(`http://localhost:8000/profile/${partnerId}`, {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/profile/${partnerId}`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setPartnerProfile)
@@ -32,12 +30,9 @@ export const ProfileProvider = (props) => {
     
     
     const requestPractice = (receiverId) => {
-        return fetch(`http://localhost:8000/requests`, {
+        return fetch(`${apiSettings.baseUrl}/requests`, {
             method: "POST",
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
-                "Content-Type": "application/json"
-            },
+            headers: apiHeaders(),
             body: JSON.stringify(
                 {
                     "receiverId": receiverId
@@ -46,21 +41,16 @@ export const ProfileProvider = (props) => {
     }
     
     const declineRequest = (requestId) => {
-        return fetch(`http://localhost:8000/requests/${requestId}`, {
+        return fetch(`${apiSettings.baseUrl}/requests/${requestId}`, {
             method: "DELETE",
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+            headers: apiHeaders()
         }).then(getProfile)
     }
     
     const acceptRequest = (requestId, followerId, leaderId) => {
-        return fetch(`http://localhost:8000/partners`, {
+        return fetch(`${apiSettings.baseUrl}/partners`, {
             method: "POST",
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
-                "Content-Type": "application/json"
-            },
+            headers: apiHeaders(),
             body: JSON.stringify(
                 {
                     "leaderId": leaderId,
@@ -68,22 +58,17 @@ export const ProfileProvider = (props) => {
                 }
             )
         }).then(() => {
-            return fetch(`http://localhost:8000/requests/${requestId}`, {
+            return fetch(`${apiSettings.baseUrl}/requests/${requestId}`, {
             method: "DELETE",
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+            headers: apiHeaders()
         })
         }).then(getProfile)        
     }
 
     const updateProfile = (userId, data) => {
-        return fetch(`http://localhost:8000/danceusers/${userId}`, {
+        return fetch(`${apiSettings.baseUrl}/danceusers/${userId}`, {
             method: "PUT",
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
-                "Content-Type": "application/json"
-            },
+            headers: apiHeaders(),
             body: JSON.stringify(data)
         }).then(getProfile)
     }

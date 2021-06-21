@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useContext, useEffect } from "react"
+import { useHistory } from 'react-router-dom';
 import { AvailabilityContext } from './AvailabilityProvider'
 import { useForm } from "react-hook-form";
 
@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 export const AvailabilityForm = () => {
     const { days, getDays, addAvailability } = useContext(AvailabilityContext)
-    const { register, watch, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm()
     
     const history = useHistory()
 
@@ -19,40 +19,33 @@ export const AvailabilityForm = () => {
     }, [])
 
     const onSubmit = (data) => {
-        console.log("data", data)
         
-        data.dayId = parseInt(data.dayId)
-        data.start = data.start
-        data.end = data.end
-        
-        console.log("data after parse", data)
+        data.dayId = parseInt(data.dayId)   
 
         addAvailability(data)
         history.push("/profile")
     };
 
-    console.log(watch("dayId"))
-    console.log(watch("start"))
-    console.log(watch("end"))
+
 
     return <>
         <form onSubmit={handleSubmit(onSubmit)}>
             
             <fieldset>
-                <label for="dayId">Day: </label>
+                <label htmlFor="dayId">Day: </label>
                 <select {...register("dayId", { required: true })} name= "dayId" id="dayId">
                     {days?.map(day => {
-                        return <option value={day.id}>{day.day}</option>
+                        return <option key={day.id} value={day.id}>{day.day}</option>
                     })}
                 </select>
             </fieldset>
             <fieldset>
-                <label for="start">From: </label>
+                <label htmlFor="start">From: </label>
                 <input type="time" {...register("start", { required: true })} ></input>
             </fieldset>
             
             <fieldset>
-                <label for="end">Until: </label>
+                <label htmlFor="end">Until: </label>
                 <input type="time" {...register("end", { required: true })} ></input>
             </fieldset>
             

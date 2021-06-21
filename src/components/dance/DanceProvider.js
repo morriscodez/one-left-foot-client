@@ -1,4 +1,6 @@
 import React, { useState, createContext } from "react"
+import { apiSettings, apiHeaders } from '../Settings'
+
 
 export const DanceContext = createContext()
 
@@ -13,30 +15,24 @@ export const DanceProvider = (props) => {
     
 
     const getDanceTypes = () => {
-        return fetch("http://localhost:8000/dancetypes", {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/dancetypes`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setDanceTypes)
     }
     
     const getUserDances = () => {
-        return fetch(`http://localhost:8000/mydances`, {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/mydances`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setUserDances)
     }
     
     const getFriendDances = (id) => {
-        return fetch(`http://localhost:8000/mydances/${id}`, {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/mydances/${id}`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setFriendDances)
@@ -44,12 +40,9 @@ export const DanceProvider = (props) => {
 
 
     const addUserDance = (newDance) => {
-        return fetch(`http://localhost:8000/mydances`, {
+        return fetch(`${apiSettings.baseUrl}/mydances`, {
             method: "POST",
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`,
-                "Content-Type": "application/json"
-            },
+            headers: apiHeaders(),
             body: JSON.stringify(newDance)
         })
         .then(getUserDances)
@@ -58,30 +51,24 @@ export const DanceProvider = (props) => {
 
 
     const getSkillLevels = () => {
-        return fetch("http://localhost:8000/skilllevels", {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/skilllevels`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setSkillLevels)
     }
     
     const getDanceRoles = () => {
-        return fetch("http://localhost:8000/roles", {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/roles`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setDanceRoles)
     }
 
     const getDancers = (danceTypeId) => {
-        return fetch(`http://localhost:8000/mydances?dance=${danceTypeId}`, {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("olf_token")}`
-            }
+        return fetch(`${apiSettings.baseUrl}/mydances?dance=${danceTypeId}`, {
+            headers: apiHeaders()
         })
         .then(res => res.json())
         .then(setDancers)
