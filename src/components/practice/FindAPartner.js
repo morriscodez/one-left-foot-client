@@ -37,7 +37,7 @@ export const FindAPartner = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             
             <fieldset>
-                <label for="danceTypeId">Dance: </label>
+                <label htmlFor="danceTypeId">Dance: </label>
                 <select {...register("danceTypeId", { required: true })} name= "danceTypeId" id="danceTypeId">
                     <option key={0} value={0}>Select A Dance</option>
                     {danceTypes?.map(type => {

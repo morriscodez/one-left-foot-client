@@ -35,28 +35,28 @@ export const DanceForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             
             <fieldset>
-                <label for="danceTypeId">Dance: </label>
+                <label htmlFor="danceTypeId">Dance: </label>
                 <select {...register("danceTypeId", { required: true })} name= "danceTypeId" id="danceTypeId">
                     {danceTypes?.map(type => {
-                        return <option value={type.id}>{type.label}</option>
+                        return <option key={type.id} value={type.id}>{type.label}</option>
                     })}
                 </select>
             </fieldset>
             
             <fieldset>
-                <label for="role">Role: </label>
+                <label htmlFor="role">Role: </label>
                 <select {...register("roleId", { required: true })} name="roleId" id="roleId">
                     {danceRoles?.map(role => {
-                        return <option value={role.id}>{role.label}</option>
+                        return <option key={role.id} value={role.id}>{role.label}</option>
                     })}
                 </select>
             </fieldset>
             
             <fieldset>
-                <label for="skillLevelId">Skill Level: </label>
+                <label htmlFor="skillLevelId">Skill Level: </label>
                 <select {...register("skillLevelId", { required: true })} name="skillLevelId" id="skillLevelId">
                     {skillLevels?.map(skill => {
-                        return <option value={skill.id}>{skill.label}</option>
+                        return <option key={skill.id} value={skill.id}>{skill.label}</option>
                     })}
                 </select>
             </fieldset>

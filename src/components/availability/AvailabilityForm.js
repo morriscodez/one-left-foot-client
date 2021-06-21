@@ -35,20 +35,20 @@ export const AvailabilityForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             
             <fieldset>
-                <label for="dayId">Day: </label>
+                <label htmlFor="dayId">Day: </label>
                 <select {...register("dayId", { required: true })} name= "dayId" id="dayId">
                     {days?.map(day => {
-                        return <option value={day.id}>{day.day}</option>
+                        return <option key={day.id} value={day.id}>{day.day}</option>
                     })}
                 </select>
             </fieldset>
             <fieldset>
-                <label for="start">From: </label>
+                <label htmlFor="start">From: </label>
                 <input type="time" {...register("start", { required: true })} ></input>
             </fieldset>
             
             <fieldset>
-                <label for="end">Until: </label>
+                <label htmlFor="end">Until: </label>
                 <input type="time" {...register("end", { required: true })} ></input>
             </fieldset>
             
