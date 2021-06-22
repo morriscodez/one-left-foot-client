@@ -3,26 +3,32 @@ import { useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 import { Button } from "react-bootstrap"
 import { DanceContext } from "../dance/DanceProvider"
-import { DanceCard } from "../dance/DanceCard"
+import { PartnerDanceCard } from "../dance/PartnerDanceCard"
 import { MyAvailabilityCard } from "../availability/MyAvailabilityCard"
 
 export const PartnerProfileRender = () => {
     const { partnerId } = useParams()
-    const { partnerProfile, getPartnerProfile, requestPractice } = useContext(ProfileContext)
+    const { partnerProfile, getPartnerProfile, requestPractice, removePartner } = useContext(ProfileContext)
 
     const { friendDances, getFriendDances } = useContext(DanceContext)
 
-
-
+    const disabledButton = true
+    
     useEffect(() => {
         getPartnerProfile(partnerId)
         getFriendDances(partnerId)
     }, [])
-
-
+    
     const handleRequest = id => {
         requestPractice(id)
     }
+
+    const handleRemove = id => {   
+        id = parseInt(id)
+        removePartner(id)        
+    }
+
+
 
     return (
         <>
@@ -44,18 +50,50 @@ export const PartnerProfileRender = () => {
                         <img src={partnerProfile.img} alt="profile">
                         </img>
                     </div>
+                    {
+                        partnerProfile.pending_request ?
+
+                        <div className="request__pending">
+                            <Button variant="primary" disabled={disabledButton} id={partnerProfile?.id}
+                                >Request Pending</Button>{' '}
+                        </div>
+
+                    :
+                        
+                        partnerProfile.already_follower ? 
+
+                    <div className="request__practice">
+                        <Button variant="primary" id={partnerProfile?.id} onClick={e => {
+                            handleRemove(e.target.id)
+                        }}>Remove From Practice Partners</Button>{' '}
+                    </div>
+                    
+                    :
+                    
+                    partnerProfile.already_leader ?
+
+                    <div className="request__practice">
+                        <Button variant="primary" id={partnerProfile?.id} onClick={e => {
+                            handleRemove(e.target.id)
+                        }}>Remove From Practice Partners</Button>{' '}
+                    </div>
+
+                    :
+                    
                     <div className="request__practice">
                         <Button variant="primary" id={partnerId} onClick={e => {
                             handleRequest(e.target.id)
                         }}>Request Practice</Button>{' '}
                     </div>
+                }
+                    
                     <article className="dances__info">
                         <header className="dances__header">
                             <h3>Dances</h3>
                         </header>
                         <section className="requests__list">
                             {friendDances?.map(dance => {
-                                return <DanceCard key={dance.dance_type.id} dance={dance} />
+                                return <PartnerDanceCard key={dance.dance_type.id} dance={dance} />
                             })}
                         </section>
                     </article>

@@ -2,6 +2,7 @@ import React, { useState, createContext } from "react"
 import { apiSettings, apiHeaders } from '../Settings'
 
 
+
 export const DanceContext = createContext()
 
 export const DanceProvider = (props) => {
@@ -45,7 +46,7 @@ export const DanceProvider = (props) => {
             headers: apiHeaders(),
             body: JSON.stringify(newDance)
         })
-        .then(getUserDances)
+        .then(res => res.json())
     }
     
 
@@ -74,10 +75,17 @@ export const DanceProvider = (props) => {
         .then(setDancers)
     }
 
+    const removeDance = (danceTypeId) => {
+        return fetch(`${apiSettings.baseUrl}/mydances/${danceTypeId}`, {
+            method: "DELETE",
+            headers: apiHeaders()
+        }).then(getUserDances)
+    }
+
     
     return (
         <DanceContext.Provider value={{
-            danceTypes, setDanceTypes, getDanceTypes, userDances, setUserDances, getUserDances, friendDances, setFriendDances, getFriendDances, addUserDance, skillLevels, setSkillLevels, getSkillLevels, getDanceRoles, setDanceRoles, danceRoles, getDancers, dancers, setDancers
+            danceTypes, setDanceTypes, getDanceTypes, userDances, setUserDances, getUserDances, friendDances, setFriendDances, getFriendDances, addUserDance, skillLevels, setSkillLevels, getSkillLevels, getDanceRoles, setDanceRoles, danceRoles, getDancers, dancers, setDancers, removeDance
 }}>
             {props.children}
         </DanceContext.Provider>

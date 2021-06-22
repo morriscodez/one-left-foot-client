@@ -37,7 +37,7 @@ export const ProfileProvider = (props) => {
                 {
                     "receiverId": receiverId
                 })
-        }).then(getProfile)
+        }).then(() => getPartnerProfile(receiverId))
     }
     
     const declineRequest = (requestId) => {
@@ -72,11 +72,20 @@ export const ProfileProvider = (props) => {
             body: JSON.stringify(data)
         }).then(getProfile)
     }
+    
+    const removePartner = (partnerId) => {
+        return fetch(`${apiSettings.baseUrl}/partners/${partnerId}`, {
+            method: "DELETE",
+            headers: apiHeaders()
+        }).then(() => getPartnerProfile(partnerId))
+    }
+
+
 
     
     return (
         <ProfileContext.Provider value={{
-            profile, setProfile, getProfile, declineRequest, acceptRequest, partnerProfile, setPartnerProfile, getPartnerProfile, requestPractice, updateProfile
+            profile, setProfile, getProfile, declineRequest, acceptRequest, partnerProfile, setPartnerProfile, getPartnerProfile, requestPractice, updateProfile, removePartner
         }}>
             {props.children}
         </ProfileContext.Provider>

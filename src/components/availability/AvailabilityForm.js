@@ -22,8 +22,13 @@ export const AvailabilityForm = () => {
         
         data.dayId = parseInt(data.dayId)   
 
-        addAvailability(data)
-        history.push("/profile")
+        addAvailability(data).then(res => {
+            if ("reason" in res){
+                alert(res.reason)
+            } else {
+                history.push("/profile")
+            }
+        })
     };
 
 

@@ -30,7 +30,7 @@ export const AvailabilityProvider = (props) => {
             headers: apiHeaders(),
             body: JSON.stringify(newWindow)
         })
-        .then(getAvailabilities)
+        .then(res => res.json())
     }
 
     const getDays = () => {
@@ -41,9 +41,16 @@ export const AvailabilityProvider = (props) => {
         .then(setDays)
     }
 
+    const deleteAvailability = (id) => {
+        return fetch(`${apiSettings.baseUrl}/availability/${id}`, {
+            method: "DELETE",
+            headers: apiHeaders()
+        }).then(getMyAvailability)
+    }
+
     return (
         <AvailabilityContext.Provider value={{
-            availabilities, setAvailabilities, getAvailabilities, myAvailability, setMyAvailability, getMyAvailability, getDays, days, addAvailability
+            availabilities, setAvailabilities, getAvailabilities, myAvailability, setMyAvailability, getMyAvailability, getDays, days, addAvailability, deleteAvailability
         }}>
             {props.children}
         </AvailabilityContext.Provider>

@@ -1,18 +1,19 @@
-import React from "react"
+import React, { useContext } from "react"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export const AvailabilityCard = ({ window }) => {
+export const PartnerDanceCard = ({ dance }) => {
+
     return <>
         <Card style={{ width: '18rem' }}>
             <Card.Body>
                 <Card.Title>
-                    {window.day?.day}
+                    {dance.dance_type?.label}
                 </Card.Title>
                 <Card.Text>
-                    {`From ${window?.start} to ${window?.end}`}
+                    Role: {dance.role?.label}
+                    Skill Level: {dance.skill_level?.label}
                 </Card.Text>
-                <Button variant="primary" href={`./profile/${window.dance_user?.id}`}>View Profile</Button>
             </Card.Body>
         </Card>
     </>
