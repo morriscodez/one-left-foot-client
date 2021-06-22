@@ -26,8 +26,13 @@ export const DanceForm = () => {
         data.roleId = parseInt(data.roleId)
         data.skillLevelId = parseInt(data.skillLevelId)
         
-        addUserDance(data)
-        history.push("/profile")
+        addUserDance(data).then(res => {
+            if ("reason" in res) {
+                alert(res.reason)
+            } else {
+                history.push("/profile")
+            }
+        })
     };
 
     return <>

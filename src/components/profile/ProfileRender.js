@@ -24,6 +24,9 @@ export const ProfileRender = () => {
         getMyAvailability()
     }, [])
 
+    useEffect(() => {
+        getProfile()
+    }, [userDances])
     
     
     const getBase64 = (file, callback) => {
