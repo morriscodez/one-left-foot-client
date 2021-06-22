@@ -28,6 +28,10 @@ export const ProfileRender = () => {
         getProfile()
     }, [userDances])
     
+    useEffect(() => {
+        getProfile()
+    }, [myAvailability])
+    
     
     const getBase64 = (file, callback) => {
         const reader = new FileReader();
