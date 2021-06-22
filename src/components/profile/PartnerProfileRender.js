@@ -44,11 +44,34 @@ export const PartnerProfileRender = () => {
                         <img src={partnerProfile.img} alt="profile">
                         </img>
                     </div>
+                    {
+                        partnerProfile.already_follower ? 
+
+                    <div className="request__practice">
+                        <Button variant="primary" id={partnerId} onClick={e => {
+                            handleRequest(e.target.id)
+                        }}>Remove From Practice Partners</Button>{' '}
+                    </div>
+                    
+                    :
+                    
+                    partnerProfile.already_leader ?
+
+                    <div className="request__practice">
+                        <Button variant="primary" id={partnerId} onClick={e => {
+                            handleRequest(e.target.id)
+                        }}>Remove From Practice Partners</Button>{' '}
+                    </div>
+
+                    :
+                    
                     <div className="request__practice">
                         <Button variant="primary" id={partnerId} onClick={e => {
                             handleRequest(e.target.id)
                         }}>Request Practice</Button>{' '}
                     </div>
+                }
+                    
                     <article className="dances__info">
                         <header className="dances__header">
                             <h3>Dances</h3>

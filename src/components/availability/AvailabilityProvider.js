@@ -31,7 +31,6 @@ export const AvailabilityProvider = (props) => {
             body: JSON.stringify(newWindow)
         })
         .then(res => res.json())
-        // .then(getAvailabilities)
     }
 
     const getDays = () => {
