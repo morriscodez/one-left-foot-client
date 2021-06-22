@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 import { Button } from "react-bootstrap"
 import { DanceContext } from "../dance/DanceProvider"
-import { DanceCard } from "../dance/DanceCard"
+import { PartnerDanceCard } from "../dance/PartnerDanceCard"
 import { MyAvailabilityCard } from "../availability/MyAvailabilityCard"
 
 export const PartnerProfileRender = () => {
@@ -93,7 +93,7 @@ export const PartnerProfileRender = () => {
                         </header>
                         <section className="requests__list">
                             {friendDances?.map(dance => {
-                                return <DanceCard key={dance.dance_type.id} dance={dance} />
+                                return <PartnerDanceCard key={dance.dance_type.id} dance={dance} />
                             })}
                         </section>
                     </article>
