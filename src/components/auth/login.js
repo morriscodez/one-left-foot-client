@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useHistory  } from "react-router"
+import { apiSettings } from "../Settings"
 // import "./Auth.css"
 
 
@@ -13,7 +14,7 @@ export const Login = props => {
     const handleLogin = (e) => {
         e.preventDefault()
 
-        return fetch("http://127.0.0.1:8000/login", {
+        return fetch(`${apiSettings.baseUrl}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,7 +29,6 @@ export const Login = props => {
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem( "olf_token", res.token )
-                    // localStorage.setItem("id", res.id)
                     history.push("/")
                 }
                 else {

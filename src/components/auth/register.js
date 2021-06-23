@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
-// import "./Auth.css"
+import { apiSettings } from "../Settings"
 
 export const Register = (props) => {
     const firstName = React.createRef()
@@ -26,7 +26,7 @@ export const Register = (props) => {
                 "password": password.current.value
             }
 
-            return fetch("http://127.0.0.1:8000/register", {
+            return fetch(`${apiSettings.baseUrl}/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -38,7 +38,6 @@ export const Register = (props) => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("olf_token", res.token)
-                        // localStorage.setItem("id", res.id)
                         history.push("/")
                     }
                 })
