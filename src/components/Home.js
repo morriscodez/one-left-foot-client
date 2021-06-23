@@ -3,5 +3,8 @@ import Redirect from 'react-router-dom'
 
 export const Home = () => {
 
-    return  (<Redirect to='/profile'/>)
+    return  <>
+                <p>homepage. Try going to profile in the navbar</p>
+            </>
+
 }
