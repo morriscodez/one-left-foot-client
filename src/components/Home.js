@@ -3,5 +3,5 @@ import Redirect from 'react-router-dom'
 
 export const Home = () => {
 
-    return  <Redirect to='/profile'/>
+    return  (<Redirect to='/profile'/>)
 }
