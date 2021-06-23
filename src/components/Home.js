@@ -1,11 +1,7 @@
 import React from "react";
-
+import Redirect from 'react-router-dom'
 
 export const Home = () => {
 
-    return  <>
-                <div>
-                    <p>Homepage text</p>
-                </div>
-            </>
+    return  <Redirect to='/profile'/>
 }
