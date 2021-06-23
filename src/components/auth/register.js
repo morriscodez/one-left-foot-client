@@ -38,7 +38,7 @@ export const Register = (props) => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("olf_token", res.token)
-                        history.push("/")
+                        history.push("/profile")
                     }
                 })
         } else {
