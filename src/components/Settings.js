@@ -8,5 +8,5 @@ export const apiHeaders = () => {
 }
 
 export const apiSettings = {
-    baseUrl: "https://oneleftfoot-nss-api.herokuapp.com/"
+    baseUrl: "https://oneleftfoot-nss-api.herokuapp.com"
 }
