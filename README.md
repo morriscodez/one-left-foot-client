@@ -10,7 +10,7 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 
 - React.js
 - Django Server
-- React Bootstrap and CSS
+- React Bootstrap
 
 ## Set Up
 
