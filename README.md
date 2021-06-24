@@ -6,7 +6,7 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 
 ## Technologies Used
 
-### Built with
+##### Built with
 
 - React.js
 - Django Server
