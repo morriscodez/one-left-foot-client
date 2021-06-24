@@ -9,8 +9,8 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 ##### Built with
 
 - React.js
-- Django Server
 - React Bootstrap
+- Django [server](https://github.com/morriscodez/one-left-foot-server)
 
 ## Set Up
 
