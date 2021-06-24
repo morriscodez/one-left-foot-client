@@ -15,7 +15,7 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 ## Set Up
 
 1. Clone down this repo
-2. npm start
+2. ```npm start```
 
 ## Logging In
 
