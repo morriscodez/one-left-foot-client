@@ -12,13 +12,11 @@ export const DancerCard = ({ dancer }) => {
                     <Card.Title>
                         {`${dancer?.dance_user.user && dancer?.dance_user.user.first_name} 
                         ${dancer?.dance_user.user && dancer?.dance_user.user.last_name}`}
-                        <hr></hr>
                     </Card.Title>
                     <Card.Text>
-                        <p>{dancer?.dance_type.label}</p>
-                        <p>{dancer?.role.label}</p>
-                        <p>{dancer?.skill_level.label}</p>
-                        <hr></hr>
+                        Dance: {dancer?.dance_type.label} <br></br>
+                        Role: {dancer?.role.label} <br></br>
+                        Skill Level: {dancer?.skill_level.label} <br></br>
                     </Card.Text>
                     <Button variant="primary" href={`./profile/${dancer?.dance_user.id}`}>View Profile</Button>
                 </Card.Body>
