@@ -2,7 +2,7 @@
 
 ## Description & Background
 
-Ballroom dance is not an easy skill to learn. Practice partners make the process more enjoyable! One Left Foot helps you find a practice partner for the dances you are interested in. You can also search for dancers that share your skill level, whether you are a beginner diving in, an intermediate honing skills, or advanced and looking to push your skills to higher heights.
+Ballroom dance is difficult to master. Practice partners make the process more enjoyable! One Left Foot helps you find a practice partner for the dances you are interested in. You can also search for dancers that share your skill level, whether you are a beginner diving in, an intermediate honing skills, or advanced and looking to push your skills to higher heights.
 
 ## Technologies Used
 
