@@ -19,8 +19,8 @@ export const DanceCard = ({ dance }) => {
                     {dance.dance_type?.label}
                 </Card.Title>
                 <Card.Text>
-                    Role: {dance.role?.label}
-                    Skill Level: {dance.skill_level?.label}
+                    Role: {dance.role?.label} <br></br>
+                    Skill Level: {dance.skill_level?.label} <br></br>
                 </Card.Text>
             </Card.Body>
             <Button key={dance.id} id={dance.id} onClick={e => {
