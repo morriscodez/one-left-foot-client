@@ -12,7 +12,7 @@ export const Footer = () => {
 
                     <div className="footer--item github">
                                                 
-                        <a href="https://github.com/dylanmorris51/spotter">
+                        <a href="https://github.com/morriscodez/one-left-foot-client">
                             <img src="/images/logo_one-left-foot.png"
                                     width="120"
                                     height="40"
