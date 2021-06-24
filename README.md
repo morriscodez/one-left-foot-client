@@ -24,5 +24,9 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 ###### Username: ```patrick@swayze.com```
 ###### Password: ```1Watermelon```
 
+## ERD & Wireframe
 
+[ERD](https://dbdiagram.io/d/60be6029b29a09603d185b64)
+
+[Wireframe](https://www.figma.com/file/OY0PFbVOG4iX11PkAuPOLC/One-Left-Foot?node-id=0%3A1)
 
