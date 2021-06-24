@@ -16,6 +16,7 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 
 1. ```git clone git@github.com:morriscodez/one-left-foot-client.git```
 2. ```npm start```
+3.  change the ```baseUrl``` in ```Settings.js``` to ```localhost:8000``` if you are running a server locally or ```https://oneleftfoot-nss-api.herokuapp.com``` to use the deployed server on heroku. NOTE: Heroku goes to sleep after 30 minutes of inactivity and takes time to wake back up. If the site does not load you will need to wait for it to wake up.
 
 ## Logging In
 
