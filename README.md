@@ -22,7 +22,7 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 
 ## [Logging In](https://oneleftfoot-nss.herokuapp.com/login)
 
-- We have preloaded the site with sample users so you can get a feel for its interactive features. You can register as a new user and fill out your own profile, or use this example log in information to immediately see a completed profile for example user "Patrick Swayze":
+- One Left Foot is preloaded the site with sample users so you can get a feel for its interactive features. You can register as a new user and fill out your own profile, or use this example log in information to immediately see a completed profile for example user "Patrick Swayze":
 ###### Username: ```patrick@swayze.com```
 ###### Password: ```1Watermelon```
 
