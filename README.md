@@ -1,4 +1,4 @@
-# One Left Foot
+# One Left Foot - [Deployed on Heroku](https://oneleftfoot-nss.herokuapp.com/login)
 
 ## Description & Background
 
@@ -10,7 +10,7 @@ Ballroom dance is difficult to master. Practice partners make the process more e
 
 - React.js
 - React Bootstrap
-- Django [server](https://github.com/morriscodez/one-left-foot-server)
+- Django - [View Server Repo Here](https://github.com/morriscodez/one-left-foot-server)
 
 ## Set Up
 
