@@ -84,7 +84,6 @@ export const ProfileRender = () => {
                             // Upload the stringified image that is stored in state
                             handleSubmit()
                         }}>Upload</button>
-
                     </div>
                 </section>
             </article>
