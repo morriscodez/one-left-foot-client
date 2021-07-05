@@ -1,4 +1,4 @@
-import { userTokenStorageKey } from "./auth/AuthSettings";
+import { userTokenStorageKey, authApi } from "./auth/AuthSettings";
 
 export const apiHeaders = () => {
     return {
@@ -8,5 +8,6 @@ export const apiHeaders = () => {
 }
 
 export const apiSettings = {
-    baseUrl: "https://oneleftfoot-nss-api.herokuapp.com"
+    // baseUrl: "https://oneleftfoot-nss-api.herokuapp.com"
+    baseUrl: `${authApi.localApiBaseUrl}`
 }

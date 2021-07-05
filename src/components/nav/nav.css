@@ -1,0 +1,23 @@
+.nav, #footer {
+    background-color: #CC3535 !important;
+}
+
+.nav-link {
+    color: #E2B1B1 !important;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #343A40;
+    color: #FFFFFF80;
+    margin-top: 10em;
+}
+
+/* .footer--item {
+    justify-content: center !important;
+} */

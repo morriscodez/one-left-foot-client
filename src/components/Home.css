@@ -1,0 +1,12 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.home--item {
+    color: #1C5D99;
+    text-align: center;
+}

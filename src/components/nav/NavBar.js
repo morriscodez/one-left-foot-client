@@ -1,21 +1,22 @@
 import React from "react"
 import Navbar from 'react-bootstrap/Navbar'
 import { Nav } from "react-bootstrap"
+import "./nav.css"
 
 
 export const NavBar = (props) => {
     return (
 
         <>
-            <Navbar bg="dark" variant="dark">
-                {/* <Navbar.Brand href="/">
+            <Navbar className="nav">
+                <Navbar.Brand href="/">
                     <img
-                        src="https://i.imgur.com/lWKMaoG.png"
-                        width="80"
-                        height="80"
+                        src="https://i.imgur.com/xEW56G2.png"
+                        width="60"
+                        height="60"
                         className="d-inline-block align-top"
-                        alt="Spotter logo" />
-                </Navbar.Brand> */}
+                        alt="logo" />
+                </Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link className="nav-link" href="/findapartner">Find A Partner</Nav.Link>
                     <Nav.Link className="nav-link" href="/myavailability">My Availability</Nav.Link>    
