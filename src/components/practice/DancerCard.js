@@ -6,7 +6,7 @@ export const DancerCard = ({ dancer }) => {
 
 
     return  <>
-            <Card style={{ width: '18rem' }}>
+            <Card className="results__item" style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={dancer?.dance_user.img} />
                 <Card.Body>
                     <Card.Title>

@@ -1,0 +1,16 @@
+.practice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.practice--item {
+    color: #1C5D99;
+    text-align: center;
+}
+
+.practice--header, .practice--text {
+    color: #1C5D99;
+}
