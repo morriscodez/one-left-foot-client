@@ -14,3 +14,10 @@
 .practice--header, .practice--text {
     color: #1C5D99;
 }
+
+.results__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+

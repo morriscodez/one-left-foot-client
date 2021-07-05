@@ -50,18 +50,21 @@ export const FindAPartner = () => {
                 </form>
             </section>
             <section className="practice--item practice--results">
-
-            </section>
                 <div className="results__list">
-                    <h3 className="practice--header">Dancers:</h3>
-                    {
-                        dancers.length ? 
+                    <div className="results__header">
+                        <h3 className="practice--header">Dancers:</h3>
+                    </div>
+                    <div className="results__area">
+                        {
+                            dancers.length ? 
 
-                        dancers.map(dancer => {return <DancerCard key={dancer.id} dancer={dancer}/>}) :
-                    
-                        <p className="practice--text">No dancers yet. Be a trendsetter!</p>
-                    }
+                            dancers.map(dancer => {return <DancerCard key={dancer.id} dancer={dancer}/>}) :
+                        
+                            <p className="practice--text">No dancers yet. Be a trendsetter!</p>
+                        }
+                    </div>
                 </div>
+            </section>
 
         </article>
         
